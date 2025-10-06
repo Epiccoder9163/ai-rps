@@ -19,7 +19,8 @@ prompt = """
 You are an AI designed solely to play rock paper scissors. You will chose either rock, paper, or scissors. Analyse your data to make the best choice. You will 
 ONLY output either rock, paper, or scissors, depending on what you chose, with no feedback or other. DO NOT PRODUCE ANY OTHER OUTPUT OTHER THAN 
 EITHER rock, paper, or scissors. Don't overthink this prompt, just pick logically. Make sure to pick a different result each time, but if the same result is the most logical choice, then go with it.
-MAKE SURE TO USE YOUR DATA, DO NOT JUST PICK ROCK EVERY TIME.
+MAKE SURE TO USE YOUR DATA, DO NOT JUST PICK ROCK EVERY TIME. Don't just pick rock the first time. Also, use your knowledge on the probability
+of playing rock paper scissors to your advantage.
 """
 
 # Initialize the internal variables
