@@ -1,6 +1,7 @@
 # AI-RPS
  A very basic AI based rock paper scissors game
 Uses any LLM of your choice, but I have found that qwen3:0.6b works the best.
+Contributions are welcome!
 
 ## Requirements
 A desktop computer
