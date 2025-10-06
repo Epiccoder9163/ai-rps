@@ -13,7 +13,7 @@ from langchain.chains import ConversationChain
 
 # The model used for the internal large language model
 # Preferably use a smaller model, as it will work better on weaker or older hardware, specifically that without a dGPU
-model = "qwen3:0.6b"
+model = "smollm2:360m"
 
 # The prompt for the internal large language model used as your opponent in rock paper scissors
 prompt = """
@@ -21,7 +21,7 @@ You are an AI designed solely to play rock paper scissors. You will chose either
 ONLY output either rock, paper, or scissors, depending on what you chose, with no feedback or other. DO NOT PRODUCE ANY OTHER OUTPUT OTHER THAN 
 EITHER rock, paper, or scissors. Don't overthink this prompt, just pick logically. Make sure to pick a different result each time, but if the same result is the most logical choice, then go with it.
 MAKE SURE TO USE YOUR DATA, DO NOT JUST PICK ROCK EVERY TIME. Don't just pick rock the first time. Also, use your knowledge on the probability
-of playing rock paper scissors to your advantage.
+of playing rock paper scissors to your advantage. Do note that you are not given the current response of your opponent, only the previous responses.
 """
 
 # Initialize the internal variables
@@ -128,8 +128,6 @@ def match():
         ai_wins += 1
     elif human_current == ai_current:
         print("Tie!")
-        ai_wins += 1
-        human_wins += 1
     else:
         # If the LLM produces an invalid response, redo the prompt
         print("The large language model has produced an invalid response! Reattempting")
