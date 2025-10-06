@@ -52,6 +52,7 @@ def human(human_temp, ai_temp):
     global human_current
     global ai_current
     os.system('clear')
+    # Gather inputs from the player to compare to the AI's result
     print("Your previous responses: " + human_temp)
     print("Your opponent's previous responses: " + ai_temp)
     print(" ")
@@ -71,6 +72,7 @@ def ai(human_temp, ai_temp):
     global human_current
     global ai_current
     os.system('clear')
+    # Create the AI prompt
     context_prompt = ChatPromptTemplate.from_messages([
         ("system", prompt),
         ("human", human_temp + ai_temp)
@@ -78,8 +80,10 @@ def ai(human_temp, ai_temp):
     chain = context_prompt | llm
     print("AI Processing ...")
     print("This may take a while, depending on your hardware")
+    # Trigger the prompt to generate a response
     response = str(chain.invoke({"context": context_prompt, "main_prompt": prompt}).content)
     os.system('clear')
+    # Clean the response
     response = re.sub(r"<think>[\s\S]*?</think>\n*\n*", "", response)
     # Find all words in the string
     words = re.findall(r'\b\w+\b', response)
@@ -96,7 +100,7 @@ def match():
     global ai_wins
     global human_wins
     os.system('clear')
-    # This section checks what answers were picked
+    # This section checks what answers were picked and chooses a winner based on that result
     if human_current == "paper" and ai_current == "rock":
         print("Paper covers rock!")
         print("Human wins!")
@@ -126,6 +130,7 @@ def match():
         ai_wins += 1
         human_wins += 1
     else:
+        # If the LLM produces an invalid response, redo the prompt
         print("The large language model has produced an invalid response! Reattempting")
         ai(human_temp, ai_temp)
         match()
@@ -136,8 +141,10 @@ def match():
     human_prev.append(human_current)
     ai_prev.append(ai_current)
     return
+# Main game loops
 while True:
     os.system('clear')
+    # Ask the user how many games they would like to play initially
     repeat_count = input("How many games would you like to play?: ")
     if repeat_count.isdigit() == True:
         repeat_count = int(repeat_count)
@@ -147,7 +154,6 @@ while True:
         print("This is an invalid input!")
         time.sleep(2)
         os.system('clear')
-# Main game loop
 for i in range(0, repeat_count):
     human_temp = ''
     ai_temp = ''
