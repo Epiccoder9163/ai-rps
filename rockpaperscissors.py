@@ -1,3 +1,4 @@
+# Import dependencies
 import ollama
 import os
 import time
