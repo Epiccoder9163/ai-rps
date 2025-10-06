@@ -74,7 +74,10 @@ def ai(human_temp, ai_temp):
         ("human", human_temp + ai_temp)
     ])
     chain = context_prompt | llm
+    print("AI Processing ...")
+    print("This may take a while, depending on your hardware")
     response = str(chain.invoke({"context": context_prompt, "main_prompt": prompt}).content)
+    os.system('clear')
     response = re.sub(r"<think>[\s\S]*?</think>\n*\n*", "", response)
     # Find all words in the string
     words = re.findall(r'\b\w+\b', response)
