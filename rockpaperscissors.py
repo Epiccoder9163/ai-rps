@@ -13,7 +13,7 @@ from langchain.chains import ConversationChain
 
 # The model used for the internal large language model
 # Preferably use a smaller model, as it will work better on weaker or older hardware, specifically that without a dGPU
-model = "mistral:7b"
+model = "smollm2:latest"
 
 # The prompt for the internal large language model used as your opponent in rock paper scissors
 prompt = """
@@ -35,6 +35,7 @@ ai_wins = 0
 
 
 # Check if the models listed above are available
+os.system('clear')
 if model in str(ollama.list()):
     print("The selected model is available!")
 else:
