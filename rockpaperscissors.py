@@ -13,14 +13,13 @@ from langchain.chains import ConversationChain
 
 # The model used for the internal large language model
 # Preferably use a smaller model, as it will work better on weaker or older hardware, specifically that without a dGPU
-model = "gemma3:4b"
+model = "llama3.2:3b"
 
 # The prompt for the internal large language model used as your opponent in rock paper scissors
 prompt = """
 You are an AI designed solely to play rock paper scissors. You will chose either rock, paper, or scissors. Analyse your data to make the best choice. You will 
 ONLY output either rock, paper, or scissors, depending on what you chose, with no feedback or other. DO NOT PRODUCE ANY OTHER OUTPUT OTHER THAN 
-EITHER rock, paper, or scissors. Don't overthink this prompt, just pick logically. Make sure to pick a different result each time, but if the same result is the most logical choice, then go with it.
-MAKE SURE TO USE YOUR DATA. Also, use your knowledge on the probability of playing rock paper scissors to your advantage. 
+EITHER rock, paper, or scissors. Don't overthink this prompt, just pick logically. MAKE SURE TO USE YOUR DATA. Also, use your knowledge on the probability of playing rock paper scissors to your advantage. 
 Do note that you are not given the current response of your opponent, only the previous responses.
 """
 
