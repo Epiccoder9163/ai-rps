@@ -54,10 +54,10 @@ def human(human_temp, ai_temp):
     global ai_current
     os.system('clear')
     # Gather inputs from the player to compare to the AI's result
-    print("Your previous responses: " + human_temp)
-    print("Your opponent's previous responses: " + ai_temp)
-    print(" ")
     while True:
+        print("Your previous responses: " + human_temp)
+        print("Your opponent's previous responses: " + ai_temp)
+        print(" ")
         response = str(input("What move do you make? (scissors/paper/rock): "))
         if response == 'scissors' or response == 'paper' or response == 'rock':
             break
